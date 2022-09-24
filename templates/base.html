@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My blog</title>
+
+</head>
+<body>
+    <h1><a href="{% url 'home' %}">My blog</a></h1>
+    {% if user.is_authenticated %}
+        <p>Saytga xush lelibsiz, {{user.username}}</p>
+        <a href="{% url 'logout' %}">LOG OUT</a>
+    {% else  %}
+        <a href="{% url 'login' %}">Saytga kirish</a>
+
+    {% endif %}
+<div>
+    {% block content %}
+    {% endblock content %}
+</div>
+<h2>
+    <a href="{% url 'create_post' %}">Yangi malumot qoshish</a>
+</h2>
+</body>
+</html>
